@@ -53,5 +53,7 @@ int main()
 
 	solveKlotskiPuzzle();
 
+	cin.get();
+
 	return EXIT_SUCCESS;
 }
