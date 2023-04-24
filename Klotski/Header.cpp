@@ -269,37 +269,6 @@ map <string, int> clearTreeDepth(map <string, int> tree, string s)
 	return tree;
 }
 
-char fieldDifference(string f1, string f2, map <char, int> info, map<char, char> eq_list, char empty, char immov)
-{
-	char diff = empty;
-	map<char, int>::iterator it = info.begin();
-	int scale = 0;
-	int i = 0;
-	for (; (it != info.end()) && (scale < 2); it++) {
-		if (eq_list[it->first] == it->first) {
-			if ((it->first != immov) && (it->first != empty)) {
-				int* pos1 = findBlock(f1, it->first, info[it->first]);
-				int* pos2 = findBlock(f2, it->first, info[it->first]);
-				i = 0;
-				while (i < info[it->first]) {
-					if (pos1[i] != pos2[i]) {
-						diff = it->first;
-						scale++;
-						i = info[it->first];
-					}
-					i++;
-				}
-				delete[] pos1;
-				delete[] pos2;
-			}
-		}
-	}
-	if (scale > 1) {
-		return empty;
-	}
-	return diff;
-}
-
 vector <string> solutionFromTree(map <string, int> tree, string finish, string start, map<char, int> info, map<char, char>eq_list, char empty, char immov, int w, int h)
 {
 	map<string, int> ::iterator map_it = tree.begin();
@@ -314,12 +283,12 @@ vector <string> solutionFromTree(map <string, int> tree, string finish, string s
 	cout << '\n';
 
 	while (result.size() < depth) {
-
-		printf("\rПодготовка решения - ход %d/%d", depth - tree[field] + 1, depth - 1);
-
-		tree = clearTreeDepth(tree, field);
+		// tree = clearTreeDepth(tree, field);
 		result.insert(result.begin(), field);
 		if (field != start) {
+
+			printf("\rПодготовка решения - ход %d/%d", depth - tree[field] + 1, depth - 1);
+
 			buf = moveAllBlocks(field, empty, immov, info, w, h);
 			for (set_it = buf.begin(); (tree.count(*set_it) == 0) || (tree[*set_it] >= tree[field]); set_it++) {}
 			field = *set_it;
