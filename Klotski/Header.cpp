@@ -211,9 +211,9 @@ map<string, int> makeSearchTree(string field, int w, int h, char empty, char imm
 
 	bool win = isSolved(field, win_block, info[win_block], win_pos);
 	if (map_it != tree.end()) {
-		printf("\rГлубина поиска: %d", depth);
+		printf("\rР“Р»СѓР±РёРЅР° РїРѕРёСЃРєР°: %d", depth);
 		if (!win) {
-			printf("\rГлубина поиска: %d", depth + 1);
+			printf("\rР“Р»СѓР±РёРЅР° РїРѕРёСЃРєР°: %d", depth + 1);
 		}
 	}
 
@@ -235,7 +235,7 @@ map<string, int> makeSearchTree(string field, int w, int h, char empty, char imm
 		if (map_it == tree.end()) {
 			depth++;
 
-			printf("\rГлубина поиска: %d", depth + 1);
+			printf("\rР“Р»СѓР±РёРЅР° РїРѕРёСЃРєР°: %d", depth + 1);
 
 			for (map_it = tree.begin(); (map_it != tree.end()) && (map_it->second != depth); map_it++) {}
 		}
@@ -286,7 +286,7 @@ vector <string> solutionFromTree(map <string, int> tree, string finish, string s
 		result.insert(result.begin(), field);
 		if (field != start) {
 
-			printf("\rПодготовка решения - ход %d/%d", depth - tree[field] + 1, depth - 1);
+			printf("\rРџРѕРґРіРѕС‚РѕРІРєР° СЂРµС€РµРЅРёСЏ - С…РѕРґ %d/%d", depth - tree[field] + 1, depth - 1);
 
 			buf = moveAllBlocks(field, empty, immov, info, w, h);
 			for (set_it = buf.begin(); (tree.count(*set_it) == 0) || (tree[*set_it] >= tree[field]); set_it++) {}
@@ -308,7 +308,7 @@ vector <string> getSolution(string start, char win_block, int* win_pos, char emp
 		}
 
 		cout << '\n';
-		cout << "Найдено кратчайшее решение.";
+		cout << "РќР°Р№РґРµРЅРѕ РєСЂР°С‚С‡Р°Р№С€РµРµ СЂРµС€РµРЅРёРµ.";
 
 		result = solutionFromTree(tree, map_it->first, start, info, eq_list, empty, immov, w, h);
 	}
@@ -319,7 +319,7 @@ void printSolution(vector <string> s, int w, int h)
 {
 	if (s.size() == 0) {
 		cout << '\n';
-		cout << "Решений этой головоломки не существует.";
+		cout << "Р РµС€РµРЅРёР№ СЌС‚РѕР№ РіРѕР»РѕРІРѕР»РѕРјРєРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚.";
 	}
 	else {
 		cout << '\n';
@@ -327,7 +327,7 @@ void printSolution(vector <string> s, int w, int h)
 		int k = 0;
 		for (; it != s.end(); it++) {
 			if (k != 0) {
-				printf("%d ход\n", k);
+				printf("%d С…РѕРґ\n", k);
 			}
 			for (int i = 0; i < h; i++) {
 				cout << (*it).substr(i * w, w) << '\n';
@@ -335,7 +335,7 @@ void printSolution(vector <string> s, int w, int h)
 			k++;
 			cout << '\n';
 		}
-		cout << "Конец решения.";
+		cout << "РљРѕРЅРµС† СЂРµС€РµРЅРёСЏ.";
 		cout << '\n';
 	}
 }
