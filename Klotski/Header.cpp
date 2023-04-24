@@ -211,9 +211,9 @@ map<string, int> makeSearchTree(string field, int w, int h, char empty, char imm
 
 	bool win = isSolved(field, win_block, info[win_block], win_pos);
 	if (map_it != tree.end()) {
-		printf("\rТекущая глубина поиска: %d", depth);
+		printf("\rГлубина поиска: %d", depth);
 		if (!win) {
-			printf("\rТекущая глубина поиска: %d", depth + 1);
+			printf("\rГлубина поиска: %d", depth + 1);
 		}
 	}
 
@@ -235,7 +235,7 @@ map<string, int> makeSearchTree(string field, int w, int h, char empty, char imm
 		if (map_it == tree.end()) {
 			depth++;
 
-			printf("\rТекущая глубина поиска: %d", depth + 1);
+			printf("\rГлубина поиска: %d", depth + 1);
 
 			for (map_it = tree.begin(); (map_it != tree.end()) && (map_it->second != depth); map_it++) {}
 		}
@@ -283,7 +283,6 @@ vector <string> solutionFromTree(map <string, int> tree, string finish, string s
 	cout << '\n';
 
 	while (result.size() < depth) {
-		// tree = clearTreeDepth(tree, field);
 		result.insert(result.begin(), field);
 		if (field != start) {
 
