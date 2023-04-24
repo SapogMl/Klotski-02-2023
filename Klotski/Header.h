@@ -8,7 +8,7 @@
 
 using namespace std;
 
-// обработка входных данных
+// РѕР±СЂР°Р±РѕС‚РєР° РІС…РѕРґРЅС‹С… РґР°РЅРЅС‹С…
 
 int* findBlock(string field, char b, int size);
 
@@ -20,7 +20,7 @@ map <char, int> getFieldInfo(string field);
 
 bool isOutOfBounds(int w, int h, int x, int y);
 
-// ходы
+// С…РѕРґС‹
 
 string moveBlockByXY(string field, char block, int dx, int dy, map <char, int> info, int w, int h, char empty);
 
@@ -30,7 +30,7 @@ set <string> moveBlockAround(string field, char block, map<char, int> info, int 
 
 set <string> moveAllBlocks(string field, char empty, char immov, map <char, int> info, int w, int h);
 
-// поиск в ширину
+// РїРѕРёСЃРє РІ С€РёСЂРёРЅСѓ
 
 bool isSolved(string field, char win_block, int size, int* win_pos);
 
@@ -38,7 +38,7 @@ string fieldToType(string field, map<char, char> eq_list);
 
 map<string, int> makeSearchTree(string field, int w, int h, char empty, char immov, map<char, int> info, char win_block, int* win_pos, map<char, char> eq_list);
 
-// выделение решения из поискового дерева
+// РІС‹РґРµР»РµРЅРёРµ СЂРµС€РµРЅРёСЏ РёР· РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР°
 
 map <string, int> clearTreeDepth(map <string, int> tree, string s);
 
@@ -46,6 +46,6 @@ vector <string> solutionFromTree(map <string, int> tree, string finish, string s
 
 vector <string> getSolution(string start, char win_block, int* win_pos, char empty, char immov, int w, int h, map <char, int> info, map<char, char> eq_list);
 
-// вывод решения
+// РІС‹РІРѕРґ СЂРµС€РµРЅРёСЏ
 
 void printSolution(vector <string> s, int w, int h);
